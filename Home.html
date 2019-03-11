@@ -24,6 +24,7 @@
             <div class="col-sm-8 text-left">
                 <center>
                     <h1 class="text-center">Välkommen till Planning poker 1.0</h1>
+                    <h2 class="text-center">Välj ett kort och invänta de andra</h2>
                 </center>
                 <p></p>
                 <hr>
@@ -50,7 +51,7 @@
                 <div id="chosenCardModal" class="modal">
                     <!-- The Close Button -->
                     <span class="close">&times;</span>
-                    <!-- Modal Content (Backside of card) -->
+                    <!-- Modal Content (Backside of card ) -->
                     <img id="cardBack" class="modal-content" src="content/Backside.jpg" style="width:100%;max-width:300px">                      
                 </div>
             </div>
@@ -71,9 +72,10 @@
     function chosenCard(el) { // The clicked card 
 
         var modal = document.getElementById('chosenCardModal');// Get the chosenCard modal
+        var card = document.getElementById('Cards');
         var cardImg = el.src; // Image source of card
         var cardModule = document.getElementById("cardBack");
-        el.onclick = function () {
+        card.onclick = function () {
             modal.style.display = "block"; // Shows the "backside of the card"
             displayChosenCard(cardModule, modal, cardImg);  // Calls the "display card function" and passes the the needed parameters
 
