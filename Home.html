@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Planning Poker August Lingheim</title>
@@ -11,7 +11,7 @@
 
     <nav class="navbar navbar-ínverse">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="navbar-header"> 
                 <center>
                     <h1 style="color:#ffffff"> Planning Poker</h1>
                 </center>
@@ -27,8 +27,8 @@
                 </center>
                 <p></p>
                 <hr>
-                <div id="Cards">
-                        <center>
+                <div id="Cards"> <!-- Div that contains all the cards in the planning poker deck-->
+                        <center> <!-- Center position  of all the cards--->
                             <div class="row container-fluid ">
                                 <input type="image" src="content/0.png" id="1" onclick="chosenCard(this)" class="cards" />
                                 <input type="image" src="content/0,5.png" id="2" onclick="chosenCard(this)" class="cards" />
@@ -50,7 +50,7 @@
                 <div id="chosenCardModal" class="modal">
                     <!-- The Close Button -->
                     <span class="close">&times;</span>
-                    <!-- Modal Content (Backside of card & the chosen card ) -->
+                    <!-- Modal Content (Backside of card) -->
                     <img id="cardBack" class="modal-content" src="content/Backside.jpg" style="width:100%;max-width:300px">                      
                 </div>
             </div>
@@ -68,16 +68,14 @@
 
 
 <script>
-    function chosenCard(el) {
+    function chosenCard(el) { // The clicked card 
 
         var modal = document.getElementById('chosenCardModal');// Get the chosenCard modal
-        var card = document.getElementById('Cards'); // Get the choseen card image 
         var cardImg = el.src; // Image source of card
-        var chosenCard = document.getElementById("cardBack");
-
-        card.onclick = function () {
-            modal.style.display = "block";
-            displayChosenCard(card, chosenCard, modal, cardImg); 
+        var cardModule = document.getElementById("cardBack");
+        el.onclick = function () {
+            modal.style.display = "block"; // Shows the "backside of the card"
+            displayChosenCard(cardModule, modal, cardImg);  // Calls the "display card function" and passes the the needed parameters
 
         }
 
@@ -91,18 +89,16 @@
 
     }
 
-    function displayChosenCard(card, chosenCard, modal, cardImg) {
+    function displayChosenCard (cardModule, modal, cardImg) {
 
-        chosenCard.onclick = function () {
-            $('#ImgBack').attr('src', cardImg);
-            chosenCard.setAttribute("src", cardImg); // 
-            modal.src = cardImg;
-            modal.style.visibility = "block";
+        cardModule.onclick = function () {
+            $('#ImgBack').attr('src', cardImg); // Gets the img source to the card module
+            cardModule.setAttribute("src", cardImg);  // Sets the image source to the selected card in the card module
+            modal.src = cardImg;// Changes the image source to the selected card
+            modal.style.visibility = "block"; // Changes the visabilty to display the chosen card
             document.getElementById('cardBack').onclick = function () {
                 location.reload(); // Reloads the application to empty all the cache of the chosen images, this could be improved in later version
-            }
- 
-            
+            }           
         }
     }
 
